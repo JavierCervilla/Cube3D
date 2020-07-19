@@ -6,11 +6,11 @@
 /*   By: jcervill <jcervill@student.42madrid.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/11 17:53:17 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/18 19:00:49 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/18 23:37:01 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../cub3d.h"
+#include "../cub3d.h"
 
 int		ft_map_check(int row, int col, t_file *f)
 {

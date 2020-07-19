@@ -6,11 +6,11 @@
 /*   By: jcervill <jcervill@student.42madrid.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 00:30:57 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/18 18:44:34 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/19 00:25:11 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../cub3d.h"
+#include "../cub3d.h"
 
 static int	localisdigit(t_file *f, char **test)
 {
@@ -56,6 +56,7 @@ int			ft_handle_cfloor(t_file *f)
 		if ((f->cf[2] = ft_atoi(test2[2])) >= 0)
 			if (f->cf[2] > 255 || f->cf[2] < 0)
 				f->rtn = -1;
+		f->read[6]++;
 		ft_free((void*)test2);
 	}
 	return (f->rtn);
@@ -84,6 +85,7 @@ int			ft_handle_croof(t_file *f)
 		if ((f->cc[2] = ft_atoi(test2[2])) >= 0)
 			if (f->cc[2] > 255 || f->cc[2] < 0)
 				return ((f->rtn = -1));
+		f->read[7]++;
 		ft_free((void*)test2);
 	}
 	return (f->rtn);

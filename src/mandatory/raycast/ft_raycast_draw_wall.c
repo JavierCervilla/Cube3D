@@ -6,11 +6,11 @@
 /*   By: jcervill <jcervill@student.42madrid.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 01:03:45 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/18 19:02:01 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/18 23:37:24 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../cub3d.h"
+#include "../cub3d.h"
 
 void		ft_texture_config(t_file *f)
 {

@@ -6,11 +6,11 @@
 /*   By: jcervill <jcervill@student.42madrid.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 00:57:44 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/18 19:01:22 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/19 06:54:07 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../cub3d.h"
+#include "../cub3d.h"
 
 void			ft_fixing_def(t_file *f)
 {
@@ -21,11 +21,11 @@ void			ft_fixing_def(t_file *f)
 		f->ml.perpwalldist = (f->ml.map.y - f->ml.pos.y + (1 - f->ml.step.y)
 			/ 2) / f->ml.ray.y;
 	f->ml.lineheight = (int)(f->h / f->ml.perpwalldist) * 2;
-	f->ml.drawstart = (-f->ml.lineheight / 2) + f->h / 2;
+	f->ml.drawstart = (-f->ml.lineheight) / 2 + f->h / 2;
 	if (f->ml.drawstart < 0)
 		f->ml.drawstart = 0;
 	f->ml.drawend = (f->ml.lineheight / 2) + f->h / 2;
-	if (f->ml.drawend > f->h || f->ml.drawend == 0)
+	if (f->ml.drawend >= f->h)
 		f->ml.drawend = f->h - 1;
 }
 

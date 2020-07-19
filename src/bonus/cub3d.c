@@ -6,11 +6,11 @@
 /*   By: jcervill <jcervill@student.42madrid.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 02:56:54 by dgomez            #+#    #+#             */
-/*   Updated: 2020/07/18 18:34:52 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/19 06:33:31 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "./cub3d.h"
 
 void		ft_check_file(t_file *f, char *file)
 {
@@ -91,7 +91,7 @@ int			ft_exit_game(t_file *f)
 int			main(int argc, char *argv[])
 {
 	t_file f;
-
+	ft_bzero((void*)&f, sizeof(f));
 	ft_check_args(&f, argc, argv);
 	if (!(f.ml.mlx = mlx_init()))
 		ft_handle_error("ERROR.MLX_INIT");
@@ -103,6 +103,9 @@ int			main(int argc, char *argv[])
 	f.ml.frame.data = (int *)mlx_get_data_addr(f.ml.frame.img,
 		&f.ml.bitspp, &f.ml.size_line, &f.ml.end);
 	ft_init_sp(&f);
+	ft_init_texture(&f);
+	ft_draw_floor(&f);
+	ft_draw_sky(&f);
 	ft_initraycast(&f);
 	ft_sprite(&f);
 	if (f.save == 1)

@@ -1,10 +1,10 @@
-R        1920 1080     
 NO ./textures/42.xpm
 SO ./textures/cl_d.xpm
-WE ./textures/Meme3.xpm
-EA ./textures/Meme4.xpm
-S  ./textures/Meme5.xpm
-F 175,20,84
+R        900 900
+S  ./textures/sprite.xpm
+WE ./textures/wood2.xpm
+EA ./textures/metal.xpm
+F 175, ,84
 C 27,77,184
 11111111111
 10000000001

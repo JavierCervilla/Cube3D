@@ -6,7 +6,7 @@
 #    By: jcervill <jcervill@student.42madrid.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/10 01:32:21 by dgomez            #+#    #+#              #
-#    Updated: 2020/07/18 18:41:39 by jcervill         ###   ########.fr        #
+#    Updated: 2020/07/19 04:23:59 by jcervill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,9 @@ bonus: $(NAME)
 	@make -C $(MLX_DIR)
 	$(CC) $(SRC_DIR_B)*.c $(READ_DIR_B)ft_*.c $(RAYCAST_DIR_B)ft_*.c -lftprintf -L $(PRINTF_DIR) -L$(MLX_DIR) $(MLX_DIR)libmlx.a -lm -lmlx -lXext -lX11 -o  $(NAME)
 	@echo "BONUS Done."
-	
+
+bebug:
+	$(CC) -g $(SRC_DIR_B)*.c $(READ_DIR_B)ft_*.c $(RAYCAST_DIR_B)ft_*.c -lftprintf -L $(PRINTF_DIR) -L$(MLX_DIR) $(MLX_DIR)libmlx.a -lm -lmlx -lXext -lX11 -o  $(NAME)
 
 re: fclean all
 

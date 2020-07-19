@@ -6,11 +6,11 @@
 /*   By: jcervill <jcervill@student.42madrid.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 01:52:14 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/18 19:01:22 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/19 00:15:41 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "./cub3d.h"
 
 void		ft_init_file_struct(t_file *f)
 {
@@ -28,6 +28,8 @@ void		ft_init_file_struct(t_file *f)
 		f->cc[i++] = -1;
 	while (i >= 0)
 		f->cf[i--] = -1;
+	while (i < 8)
+		f->read[++i] = 0;
 	f->c_c = 0;
 	f->c_f = 0;
 	ft_init_file_struct2(f);

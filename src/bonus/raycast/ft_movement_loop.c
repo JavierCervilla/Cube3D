@@ -6,11 +6,11 @@
 /*   By: jcervill <jcervill@student.42madrid.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 01:06:24 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/18 04:34:44 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/19 06:34:16 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../cub3d.h"
+#include "../cub3d.h"
 
 int			ft_check_and_move(t_file *f)
 {
@@ -77,6 +77,8 @@ int			ft_move_and_draw(t_file *f)
 	f->ml.frame.img = mlx_new_image(f->ml.mlx, f->w, f->h);
 	f->ml.frame.data = (int*)mlx_get_data_addr(f->ml.frame.img,
 		&f->ml.bitspp, &f->ml.size_line, &f->ml.end);
+	ft_draw_floor(f);
+	ft_draw_sky(f);
 	ft_initraycast(f);
 	ft_sprite(f);
 	mlx_put_image_to_window(f->ml.mlx, f->ml.window, f->ml.frame.img, 0, 0);

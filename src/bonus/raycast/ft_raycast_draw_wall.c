@@ -6,11 +6,11 @@
 /*   By: jcervill <jcervill@student.42madrid.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 01:03:45 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/18 19:02:01 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/19 06:46:34 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../cub3d.h"
+#include "../cub3d.h"
 
 void		ft_texture_config(t_file *f)
 {
@@ -63,12 +63,7 @@ void		ft_draw_line(t_file *f)
 	int i;
 	int color;
 
-	i = 0;
-	while (i < f->ml.drawstart)
-	{
-		*(f->ml.frame.data + (i * f->w) + f->ml.x) = f->c_c;
-		i++;
-	}
+	i = f->ml.drawstart;
 	while (i <= f->ml.drawend)
 	{
 		f->ml.texty = (int)f->ml.textpos &
@@ -77,11 +72,6 @@ void		ft_draw_line(t_file *f)
 		color = f->ml.text[f->ml.t_side].data[f->ml.text[f->ml.t_side].height
 			* f->ml.texty + f->ml.textx];
 		*(f->ml.frame.data + (i * f->w) + f->ml.x) = color;
-		i++;
-	}
-	while (i <= f->h)
-	{
-		*(f->ml.frame.data + (i * f->w) + f->ml.x) = f->c_f;
 		i++;
 	}
 }

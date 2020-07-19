@@ -6,11 +6,11 @@
 /*   By: jcervill <jcervill@student.42madrid.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 01:15:18 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/18 19:00:49 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/18 23:37:36 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../cub3d.h"
+#include "../cub3d.h"
 
 void		ft_init_sp(t_file *f)
 {

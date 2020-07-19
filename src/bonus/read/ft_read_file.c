@@ -6,57 +6,52 @@
 /*   By: jcervill <jcervill@student.42madrid.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 00:27:15 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/18 18:14:56 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/19 03:09:52 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../cub3d.h"
+#include "../cub3d.h"
 
 /*
 **	ft_read_src_file:
 **	devuelve 0 por default y -1 en error.
 */
 
-int			ft_read_src_file(t_file *f)
+int			ft_isspace(char *s)
 {
-	if (!f->w && !f->h)
+	int i;
+
+	i = 0;
+	while (s[i] != 0)
 	{
-		if ((ft_handle_resolution(f)) == -1 || f->w < 200 ||
-			f->w > 1920 || f->h < 200 || f->h > 1080)
-			ft_handle_error("Res. ERROR while reading file. Bitch...\n");
+		if (s[i] == ' ' || s[i] == '\n' || s[i] == '\f' || s[i] == '\r' ||
+			s[i] == '\t' || s[i] == '\v')
+			i++;
+		break ;
 	}
-	else if (!f->texture[0] || !f->texture[1] || !f->texture[2]
-		|| !f->texture[3])
-	{
-		if ((ft_handle_textures(f)) == -1)
-			ft_handle_error("Text. ERROR while reading file. Nerd...\n");
-	}
-	else if (f->sprite == 0)
-	{
-		if ((ft_handle_spritex(f)) == -1)
-			ft_handle_error("Text. ERROR while reading file. Nerd...\n");
-	}
-	ft_read_src_file2(f);
-	return (f->rtn);
+	return (i);
 }
 
-int			ft_read_src_file2(t_file *f)
+int			ft_read_src_file(t_file *f)
 {
-	if (f->cf[0] == -1 || f->cf[1] == -1 || f->cf[2] == -1)
-	{
-		if ((ft_handle_cfloor(f)) == -1)
-			ft_handle_error("Text. ERROR while reading file. Nerd...\n");
-	}
-	else if (f->cc[0] == -1 || f->cc[1] == -1 || f->cc[2] == -1)
-	{
-		if ((ft_handle_croof(f)) == -1)
-			ft_handle_error("Text. ERROR while reading file. Nerd...\n");
-	}
-	else if (f->mapreaded == -1)
-	{
-		if ((ft_handle_map_read(f) == -1))
-			ft_handle_error("Map. ERROR while reading flie. Noob..");
-	}
+	if (f->line[0] == 'R' && f->line[1] == ' ')
+		f->rtn = ft_handle_resolution(f);
+	else if ((f->line[0] == 'N' && f->line[1] == 'O') || (f->line[0] == 'S' &&
+		f->line[1] == 'O') || (f->line[0] == 'W' && f->line[1] == 'E') ||
+		(f->line[0] == 'E' && f->line[1] == 'A'))
+		f->rtn = ft_handle_textures(f);
+	else if (f->line[0] == 'S' && f->line[1] == ' ')
+		f->rtn = ft_handle_spritex(f);
+	else if (f->line[0] == 'F' && f->line[1] == ' ')
+		f->rtn = ft_handle_cfloor(f);
+	else if (f->line[0] == 'C' && f->line[1] == ' ')
+		f->rtn = ft_handle_croof(f);
+	else if (ft_isdigit(f->line[0]) || f->line[0] == ' ')
+		f->rtn = ft_handle_map_read(f);
+	else if (ft_isspace(f->line) == ft_strlen_int(f->line))
+		f->rtn = 1;
+	else
+		ft_handle_error("ERROR: CONFIG LINE FORBIDEN\n");
 	return (f->rtn);
 }
 
@@ -66,15 +61,12 @@ int			ft_read(t_file *f)
 	char	*line;
 
 	ft_init_file_struct(f);
-	while ((br = get_next_line(f->fd, &line)) >= 0)
+	while ((br = get_next_line(f->fd, &line)) > 0)
 	{
 		f->line = line;
 		if (ft_read_src_file(f) == -1)
-			return (-1);
+			ft_handle_error("ERROR: AN ERROR READING CONFIG\n");
 		free(line);
-		line = NULL;
-		if (br == 0)
-			break ;
 	}
 	ft_handle_rgb(f);
 	ft_init_mlx_struct(f);

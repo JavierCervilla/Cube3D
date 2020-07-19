@@ -6,11 +6,22 @@
 /*   By: jcervill <jcervill@student.42madrid.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 00:32:11 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/18 19:00:49 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/19 03:05:44 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../cub3d.h"
+#include "../cub3d.h"
+
+int			ft_check_config(t_file *f)
+{
+	int		i;
+
+	i = -1;
+	while (i < 8)
+		if (f->read[++i] > 1)
+			return (-1);
+	return (0);
+}
 
 int			ft_handle_map_read(t_file *f)
 {
@@ -20,6 +31,8 @@ int			ft_handle_map_read(t_file *f)
 	i = 0;
 	if (ft_isdigit(f->line[0]) || f->line[0] == ' ')
 	{
+		if (ft_check_config(f) == -1)
+			ft_handle_error("ERROR: DUPLICATE LINE IN CONFIG\n");
 		i = ft_strlen(f->line);
 		if (f->buff == NULL)
 			temp = ft_strdup(f->line);
@@ -92,9 +105,9 @@ int			alloc_map(t_file *f)
 			}
 			i[2]++;
 		}
+		f->mapreaded = 1;
+		if (f->dir == '\0')
+			ft_handle_error("ERROR: NO DIR\n");
 	}
-	f->mapreaded = 1;
-	if (f->dir == '\0')
-		ft_handle_error("ERROR: NO DIR\n");
 	return (0);
 }

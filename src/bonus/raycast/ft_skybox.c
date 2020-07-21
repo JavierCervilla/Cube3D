@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_skybox.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcervill <jcervill@student.42madrid.fr>    +#+  +:+       +#+        */
+/*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/19 04:04:14 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/19 16:48:56 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/21 20:26:58 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void    ft_init_texture(t_file *f)
     f->ml.text[5].data = (int*)mlx_get_data_addr(f->ml.text[5].img,
         &f->ml.text[5].bits_per_pixel, &f->ml.text[5].size_line,
         &f->ml.text[5].endian);
-    texture = "./textures/metal.xpm";
+    texture = "./textures/images/own/suelo_piedra.xpm";
     f->ml.text[6].img = mlx_xpm_file_to_image(f->ml.mlx, texture,
         &f->ml.text[6].width, &f->ml.text[6].height);
     f->ml.text[6].data = (int*)mlx_get_data_addr(f->ml.text[6].img,
@@ -54,7 +54,7 @@ void    ft_draw_floor(t_file *f)
         f->fl.floor.x = f->ml.pos.x + f->fl.rowdist * f->fl.raydir0.x;
         f->fl.floor.y = f->ml.pos.y + f->fl.rowdist * f->fl.raydir0.y;
         x = -1;
-        while (++x < f->h)
+        while (++x < f->w)
         {
             f->fl.cellx = (int)f->fl.floor.x;
             f->fl.celly = (int)f->fl.floor.y;
@@ -65,13 +65,8 @@ void    ft_draw_floor(t_file *f)
             seg = 256 * f->fl.ty + f->fl.tx;
             if (seg >= 0)
                 color = f->ml.text[6].data[seg];
-            f->ml.frame.data[y * f->w + x] = color;
-            /* seg = f->ml.text[6].width * f->fl.ty + f->fl.tx;
-            if (seg >= 0)
-                color = f->ml.text[6].data[seg];
-            f->ml.frame.data[(f->h - y - 1) * f->w + x] = color; */
+            *(f->ml.frame.data + (y * f->w) + x) = color;
         }
-        
     }
 }
 
@@ -89,7 +84,6 @@ void    ft_draw_sky(t_file *f)
         {
             color = f->ml.text[5].data[y % 1366 * 1366 + x % 1366];
             f->ml.frame.data[y * f->w + x] = color;
-            
         }
     }
 }

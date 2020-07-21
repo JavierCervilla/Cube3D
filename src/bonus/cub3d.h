@@ -6,7 +6,7 @@
 /*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 01:34:16 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/21 02:59:40 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/21 18:39:58 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 #  define KEY_A 97
 #  define KEY_S 115
 #  define KEY_D 100
+#  define KEY_M 46
 #  define KEY_LEFT 65361
 #  define KEY_UP 65362
 #  define KEY_RIGHT 65363
@@ -48,6 +49,7 @@
 #  define KEY_UP 126
 #  define KEY_RIGHT 124
 #  define KEY_DOWN 125
+#  define KEY_M 46
 # endif
 # define ROT 0.14
 # define MOV 0.14
@@ -55,10 +57,11 @@
 /*
 ** MINIMAP
 */
-# define M_SIZE_H 400
-# define M_SIZE_W 400
+# define M_SIZE_H 130
+# define M_SIZE_W 100
 
-# define C_WALL 2360316
+# define C_PLAYER 3407667
+# define C_WALL 6316128
 # define C_BORDER 0
 # define C_FLOOR 16777215
 # define C_SPRITE 16515847
@@ -165,6 +168,7 @@ typedef struct		s_mlx
 	t_img			frame;
 	t_img			text[7];
 	t_img			minimap;
+	t_img			mano;
 	int				t_side;
 	double			wallx;
 	int				textx;
@@ -181,6 +185,7 @@ typedef struct		s_mov
 	int				d;
 	int				r;
 	int				l;
+	int				m;
 }					t_mov;
 
 typedef struct		s_readfile

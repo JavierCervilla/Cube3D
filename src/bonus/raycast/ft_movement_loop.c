@@ -6,7 +6,7 @@
 /*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 01:06:24 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/20 23:50:10 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/21 18:33:30 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ int			ft_move_and_draw(t_file *f)
 	ft_initraycast(f);
 	ft_sprite(f);
 	mlx_put_image_to_window(f->ml.mlx, f->ml.window, f->ml.frame.img, 0, 0);
-	ft_draw_minimap(f, M_SIZE_W /f->ncolmax, M_SIZE_H /f->nfil);
-	mlx_put_image_to_window(f->ml.mlx, f->ml.window, f->ml.minimap.img, 0, 0);
+	ft_draw_minimap(f, f->m_size_w /f->ncolmax, f->m_size_h /f->nfil);
+	mlx_put_image_to_window(f->ml.mlx, f->ml.window, f->ml.mano.img, (f->w / 2) - f->ml.mano.width / 2, f->h - (f->ml.mano.height - 2));
+	mlx_put_image_to_window(f->ml.mlx, f->ml.window, f->ml.minimap.img,
+	(f->ml.mano.img, (f->w / 2) - f->ml.mano.width / 2) + 377, (f->h - (f->ml.mano.height -5) + 49));
 }

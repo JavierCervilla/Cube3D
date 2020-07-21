@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_movement_loop.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcervill <jcervill@student.42madrid.fr>    +#+  +:+       +#+        */
+/*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 01:06:24 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/19 06:34:16 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/20 23:50:10 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,6 @@ int			ft_move_and_draw(t_file *f)
 	ft_initraycast(f);
 	ft_sprite(f);
 	mlx_put_image_to_window(f->ml.mlx, f->ml.window, f->ml.frame.img, 0, 0);
+	ft_draw_minimap(f, M_SIZE_W /f->ncolmax, M_SIZE_H /f->nfil);
+	mlx_put_image_to_window(f->ml.mlx, f->ml.window, f->ml.minimap.img, 0, 0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcervill <jcervill@student.42madrid.fr>    +#+  +:+       +#+        */
+/*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 02:56:54 by dgomez            #+#    #+#             */
-/*   Updated: 2020/07/18 23:36:17 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/20 17:31:22 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int			ft_exit_game(t_file *f)
 	if (f->mapreaded == 1)
 	{
 		i = -1;
-		while (f->map[++i] != NULL)
+		while (++i < f->nfil)
 			free(f->map[i]);
 		free(f->map);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcervill <jcervill@student.42madrid.fr>    +#+  +:+       +#+        */
+/*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 01:34:16 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/19 03:50:02 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/21 03:15:39 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,7 @@ typedef struct		s_readfile
 	int				c_c;
 	int				cc[3];
 	int				**map;
+	int				**c_map;
 	char			dir;
 	int				pos[2];
 	int				mapreaded;
@@ -209,6 +210,7 @@ int					ft_handle_croof(t_file *f);
 int					ft_handle_cfloor(t_file *f);
 int					ft_handle_map_read(t_file *f);
 int					ft_check_config(t_file *f);
+int					ft_copy_map(t_file *f);
 
 /*
 ** RAY CASTER ENGINE

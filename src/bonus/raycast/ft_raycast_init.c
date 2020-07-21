@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_raycast_init.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcervill <jcervill@student.42madrid.fr>    +#+  +:+       +#+        */
+/*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 00:57:44 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/19 06:54:07 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/21 00:21:52 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,16 @@ void			ft_calc_side(t_file *f)
 	{
 		f->ml.raylength.x += f->ml.deltadist.x;
 		f->ml.map.x += f->ml.step.x;
+		if (f->ml.map.x < 0)
+			f->ml.map.x = 0;
 		f->ml.side = 0;
 	}
 	else
 	{
 		f->ml.raylength.y += f->ml.deltadist.y;
 		f->ml.map.y += f->ml.step.y;
+		if (f->ml.map.y < 0)
+			f->ml.map.y = 0;
 		f->ml.side = 1;
 	}
 }

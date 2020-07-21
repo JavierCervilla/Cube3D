@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_raycast_draw_wall.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcervill <jcervill@student.42madrid.fr>    +#+  +:+       +#+        */
+/*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 01:03:45 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/19 06:46:34 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/21 00:13:01 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int			ft_initraycast(t_file *f)
 		while (hit == 0)
 		{
 			ft_calc_side(f);
-			if (f->map[(int)f->ml.map.x][(int)f->ml.map.y] == 1)
+			if (f->map[(unsigned int)f->ml.map.x][(unsigned int)f->ml.map.y] == 1)
 				hit = 1;
 		}
 		ft_fixing_def(f);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_handle_text.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcervill <jcervill@student.42madrid.fr>    +#+  +:+       +#+        */
+/*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 00:29:52 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/19 02:47:25 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/20 17:33:34 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int			ft_check_extension(char *str)
 	int		rtn;
 
 	rtn = -1;
+	if (!str)
+		return (rtn);
 	extensions = ".xpm";
 	if (ft_strcmp(extensions, str) != 0)
 		rtn = 1;
@@ -34,7 +36,7 @@ int			ft_handle_path_texture(t_file *f, int i)
 	else if (*(f->line + 1) == '/')
 		aux = f->line;
 	else
-		f->rtn = 1;
+		ft_handle_error("The Path of Texture file is invalid\n");
 	if (ft_check_extension((ext = ft_strchr(++aux, '.'))) < 0)
 		ft_handle_error("The extension of Texture file is invalid\n");
 	if ((f->texture[i] = open(--aux, O_RDONLY)) < 0)

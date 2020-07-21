@@ -3,14 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jcervill <jcervill@student.42madrid.fr>    +#+  +:+       +#+         #
+#    By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/10 01:32:21 by dgomez            #+#    #+#              #
-#    Updated: 2020/07/19 04:23:59 by jcervill         ###   ########.fr        #
+#    Updated: 2020/07/20 20:53:38 by jcervill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	Cub3D
+
+NAME_BONUS		=	Cub3D_Bonus
 
 INC_DIR			=	./includes/
 
@@ -42,6 +44,12 @@ $(NAME):
 	$(CC) $(SRC_DIR)*.c $(READ_DIR)ft_*.c $(RAYCAST_DIR)ft_*.c -lftprintf -L $(PRINTF_DIR)   -L$(MLX_DIR) $(MLX_DIR)libmlx.a -lm -lmlx -lXext -lX11 -o  $(NAME)
 	@echo "Done."
 
+$(NAME_BONUS):
+	@make -C $(PRINTF_DIR)
+	@make -C $(MLX_DIR)
+	$(CC) $(SRC_DIR_B)*.c $(READ_DIR_B)ft_*.c $(RAYCAST_DIR_B)ft_*.c -lftprintf -L $(PRINTF_DIR) -L$(MLX_DIR) $(MLX_DIR)libmlx.a -lm -lmlx -lXext -lX11 -o  $(NAME_BONUS)
+	@echo "BONUS Done."
+
 debug:
 	$(CC) -g $(SRC_DIR)*.c $(READ_DIR)ft_*.c $(RAYCAST_DIR)ft_*.c -lftprintf -L $(PRINTF_DIR)   -L$(MLX_DIR) $(MLX_DIR)libmlx.a -lm -lmlx -lXext -lX11 -o  $(NAME)
 
@@ -63,17 +71,15 @@ fclean: clean
 	@rm -f $(READ_DIR)*.o
 	@rm -f $(RAYCAST_DIR)*.o
 	@rm -f $(NAME)
+	@rm -f $(NAME_BONUS)
 	@echo "Cleaning Cub3d..."
 
-bonus: $(NAME)
+bonus: $(NAME_BONUS)
 
-	@make -C $(PRINTF_DIR)
-	@make -C $(MLX_DIR)
-	$(CC) $(SRC_DIR_B)*.c $(READ_DIR_B)ft_*.c $(RAYCAST_DIR_B)ft_*.c -lftprintf -L $(PRINTF_DIR) -L$(MLX_DIR) $(MLX_DIR)libmlx.a -lm -lmlx -lXext -lX11 -o  $(NAME)
-	@echo "BONUS Done."
+bre: fclean bonus
 
 bebug:
-	$(CC) -g $(SRC_DIR_B)*.c $(READ_DIR_B)ft_*.c $(RAYCAST_DIR_B)ft_*.c -lftprintf -L $(PRINTF_DIR) -L$(MLX_DIR) $(MLX_DIR)libmlx.a -lm -lmlx -lXext -lX11 -o  $(NAME)
+	$(CC) -g $(SRC_DIR_B)*.c $(READ_DIR_B)ft_*.c $(RAYCAST_DIR_B)ft_*.c -lftprintf -L $(PRINTF_DIR) -L$(MLX_DIR) $(MLX_DIR)libmlx.a -lm -lmlx -lXext -lX11 -o  $(NAME_BONUS)
 
 re: fclean all
 

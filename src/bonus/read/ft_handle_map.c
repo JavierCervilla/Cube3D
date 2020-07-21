@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_handle_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcervill <jcervill@student.42madrid.fr>    +#+  +:+       +#+        */
+/*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 00:32:11 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/19 03:05:44 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/21 03:05:17 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,19 +65,16 @@ static void	ft_filling_matrix(t_file *f, int k, int i, int j)
 	}
 	else if (f->buff[k] == ' ')
 		f->map[i][j] = 4;
-	else if (f->buff[k] == 'N' || f->buff[k] == 'S' || f->buff[k] == 'E'
-		|| f->buff[k] == 'W')
+	else if ((f->buff[k] == 'N' || f->buff[k] == 'S' || f->buff[k] == 'E'
+		|| f->buff[k] == 'W') && f->dir == '\0')
 	{
-		if (f->dir == '\0')
-		{
-			f->map[i][j] = 0;
-			f->dir = f->buff[k];
-			f->pos[0] = i;
-			f->ml.pos.x = i + 0.5;
-			f->pos[1] = j;
-			f->ml.pos.y = j + 0.5;
-			ft_cast_init_dir(f);
-		}
+		f->map[i][j] = 0;
+		f->dir = f->buff[k];
+		f->pos[0] = i;
+		f->ml.pos.x = i + 0.5;
+		f->pos[1] = j;
+		f->ml.pos.y = j + 0.5;
+		ft_cast_init_dir(f);
 	}
 	else
 		ft_handle_error_ptr("ERROR", (void *)f->map);
@@ -108,6 +105,30 @@ int			alloc_map(t_file *f)
 		f->mapreaded = 1;
 		if (f->dir == '\0')
 			ft_handle_error("ERROR: NO DIR\n");
+	}
+	return (0);
+}
+
+int			ft_copy_map(t_file *f)
+{
+	int i;
+	int j;
+
+	i = -1;
+	if (!(f->c_map = ft_calloc(f->nfil, sizeof(int *))))
+		return (0);
+	else
+	{
+		while (++i < f->nfil)
+		{
+			if (!(f->c_map[i] = ft_calloc(f->ncolmax, sizeof(int *))))
+				return (0);
+			j = -1;
+			while (++j < f->ncolmax)
+			{
+				f->c_map[i][j] = f->map[i][j]; 
+			}
+		}
 	}
 	return (0);
 }

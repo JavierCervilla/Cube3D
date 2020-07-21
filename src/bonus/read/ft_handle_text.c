@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_handle_text.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcervill <jcervill@student.42madrid.fr>    +#+  +:+       +#+        */
+/*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 00:29:52 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/19 04:52:21 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/20 17:12:56 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int			ft_check_extension(char *str)
 
 	rtn = -1;
 	extensions = ".xpm";
+	if (str == 0)
+		ft_handle_error("ERROR: extension incorrecta\n");
 	if (ft_strcmp(extensions, str) != 0)
 		rtn = 1;
 	return (rtn);
@@ -34,7 +36,7 @@ int			ft_handle_path_texture(t_file *f, int i)
 	else if (*(f->line + 1) == '/')
 		aux = f->line;
 	else
-		f->rtn = 1;
+		ft_handle_error("Path of Texture is invalid\n");
 	if (ft_check_extension((ext = ft_strchr(++aux, '.'))) < 0)
 		ft_handle_error("The extension of Texture file is invalid\n");
 	if ((f->texture[i] = open(--aux, O_RDONLY)) < 0)
@@ -60,7 +62,7 @@ int			ft_handle_path_spritex(t_file *f, int i)
 	if (!(f->line = ft_strchr(f->line, '.')))
 		ft_handle_error("Path of Spritex is invalid\n");
 	else if (*(f->line + 1) == '/')
-		aux = ft_strdup(f->line);
+		aux = f->line;
 	else
 		ft_handle_error("Path of Spritex is invalid\n");
 	if (ft_check_extension((ext = ft_strchr(++aux, '.'))) < 0)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcervill <jcervill@student.42madrid.fr>    +#+  +:+       +#+        */
+/*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 01:34:16 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/19 06:33:53 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/21 02:59:40 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,19 @@
 # define ROT 0.14
 # define MOV 0.14
 # define SIZE 640
+/*
+** MINIMAP
+*/
+# define M_SIZE_H 400
+# define M_SIZE_W 400
+
+# define C_WALL 2360316
+# define C_BORDER 0
+# define C_FLOOR 16777215
+# define C_SPRITE 16515847
+
+
+
 
 typedef struct		s_save
 {
@@ -151,6 +164,7 @@ typedef struct		s_mlx
 	int				side;
 	t_img			frame;
 	t_img			text[7];
+	t_img			minimap;
 	int				t_side;
 	double			wallx;
 	int				textx;
@@ -182,6 +196,7 @@ typedef struct		s_readfile
 	int				c_c;
 	int				cc[3];
 	int				**map;
+	int				**c_map;
 	char			dir;
 	int				pos[2];
 	int				mapreaded;
@@ -192,6 +207,9 @@ typedef struct		s_readfile
 	int				sprite_num;
 	int				save;
 	int				read[8];
+	int				**minimap;
+	int				m_size_h;
+	int				m_size_w;
 	t_sprite		*spr;
 	t_mlx			ml;
 	t_mov			mv;
@@ -225,7 +243,7 @@ int					ft_handle_croof(t_file *f);
 int					ft_handle_cfloor(t_file *f);
 int					ft_handle_map_read(t_file *f);
 int					ft_check_config(t_file *f);
-
+int					ft_copy_map(t_file *f);
 /*
 ** RAY CASTER ENGINE
 */
@@ -282,4 +300,13 @@ void				ft_create_bmp(t_file *f);
 void				ft_init_texture(t_file *f);
 void				ft_draw_sky(t_file *f);
 void    			ft_draw_floor(t_file *f);
+
+/*
+** MINIMAP
+*/
+
+void				ft_init_minimap(t_file *f);
+void				ft_create_minimap(t_file *f);
+void				ft_draw_minimap(t_file *f, int texx, int texy);
+
 #endif

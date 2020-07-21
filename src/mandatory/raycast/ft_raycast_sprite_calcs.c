@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_raycast_sprite_calcs.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcervill <jcervill@student.42madrid.fr>    +#+  +:+       +#+        */
+/*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 01:17:00 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/19 03:49:38 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/21 04:03:52 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ static void	ft_draw_sprites(t_file *f, int i, int stripe)
 
 	f->ml.tex_x = (int)(256 * (stripe - (-f->ml.sp_width / 2 +
 		f->ml.sp_screen_x))
-	* f->ml.text[4].width / f->ml.sp_width) / 256 &
-	(f->ml.text[4].width - 1);
+	* SIZE / f->ml.sp_width) / 256;
 	if (f->ml.transform.y > 0 && stripe > 0 && stripe < f->w &&
 		f->ml.transform.y < f->ml.zbuff[stripe])
 	{
@@ -30,8 +29,8 @@ static void	ft_draw_sprites(t_file *f, int i, int stripe)
 		while (++y < f->ml.end_sp_y)
 		{
 			d = (y) * 256 - f->h * 128 + f->ml.sp_height * 128;
-			f->ml.tex_y = (int)((d * f->ml.text[4].height) / f->ml.sp_height)
-				/ 256 & (f->ml.text[4].height - 1);
+			f->ml.tex_y = (int)((d * SIZE) / f->ml.sp_height)
+				/ 256;
 			seg = f->ml.text[4].width * f->ml.tex_y + f->ml.tex_x;
 			if (seg >= 0)
 				color = f->ml.text[4].data[seg];

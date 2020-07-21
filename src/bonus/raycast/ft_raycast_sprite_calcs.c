@@ -21,7 +21,7 @@ static void	ft_draw_sprites(t_file *f, int i, int stripe)
 
 	f->ml.tex_x = (int)(256 * (stripe - (-f->ml.sp_width / 2 +
 		f->ml.sp_screen_x))
-	* SIZE / f->ml.sp_width) / 256;
+	* f->ml.text[4].width / f->ml.sp_width) / 256;
 	if (f->ml.transform.y > 0 && stripe > 0 && stripe < f->w &&
 		f->ml.transform.y < f->ml.zbuff[stripe])
 	{
@@ -29,7 +29,7 @@ static void	ft_draw_sprites(t_file *f, int i, int stripe)
 		while (++y < f->ml.end_sp_y)
 		{
 			d = (y) * 256 - f->h * 128 + f->ml.sp_height * 128;
-			f->ml.tex_y = (int)((d * SIZE) / f->ml.sp_height)
+			f->ml.tex_y = (int)((d * f->ml.text[4].width) / f->ml.sp_height)
 				/ 256;
 			seg = f->ml.text[4].width * f->ml.tex_y + f->ml.tex_x;
 			if (seg >= 0)

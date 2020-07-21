@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mapcheck.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcervill <jcervill@student.42madrid.fr>    +#+  +:+       +#+        */
+/*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/11 17:53:17 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/18 23:37:01 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/21 04:02:19 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,11 @@ int		ft_map_check(int row, int col, t_file *f)
 	int ok;
 
 	if (row < 0 || col < 0 || row >= f->nfil || col >= f->ncolmax ||
-		f->map[row][col] == 4)
+		f->c_map[row][col] == 4)
 		return (-1);
-	else if (f->map[row][col] == 3 || f->map[row][col] == 1 ||
-		f->map[row][col] == 2)
+	else if (f->c_map[row][col] == 3 || f->c_map[row][col] == 1)
 		return (0);
-	if (f->map[row][col] == 2)
-		f->map[row][col] = 2;
-	else
-		f->map[row][col] = 3;
+	f->c_map[row][col] = 3;
 	ok = ft_map_check(row, col - 1, f);
 	ok = ok == 0 ? ft_map_check(row, col + 1, f) : ok;
 	ok = ok == 0 ? ft_map_check(row - 1, col, f) : ok;

@@ -6,7 +6,7 @@
 /*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 04:05:51 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/22 02:48:28 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/22 04:17:19 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define MANO "./textures/images/horror/mano_ipad.xpm"
 #define BAT "./textures/images/own/batery.xpm"
 
-static int ft_choose_color(t_file *f, int x, int y)
+static int	ft_choose_color(t_file *f, int x, int y)
 {
 	if (x >= f->nfil || y >= f->ncolmax)
 		return (0);
@@ -28,15 +28,14 @@ static int ft_choose_color(t_file *f, int x, int y)
 		return (C_SPRITE);
 	else if (f->map[x][y] == 4)
 		return (C_FLOOR);
-	
 }
 
-void	ft_draw_minimap(t_file *f, int texx, int texy)
+void		ft_draw_minimap(t_file *f, int texx, int texy)
 {
-	int x;
-	int y;
-	int k;
-	int l;
+	int		x;
+	int		y;
+	int		k;
+	int		l;
 
 	k = 0;
 	l = 0;
@@ -48,26 +47,21 @@ void	ft_draw_minimap(t_file *f, int texx, int texy)
 		{
 			l = x / texx;
 			k = y / texy;
-			*(f->ml.minimap.data + (y * (f->m_size_w)) +(x)) = ft_choose_color(f, k, l);
+			*(f->ml.minimap.data + (y * (f->m_size_w)) +
+			(x)) = ft_choose_color(f, k, l);
 		}
 	}
 }
 
-void	ft_init_minimap(t_file *f)
+void		ft_init_minimap(t_file *f)
 {
 	int texelx;
 	int texely;
 	int	aux_w;
 	int aux_h;
-	
-	if (f->h < M_SIZE_H)
-		aux_h = f->h;
-	else
-		aux_h = M_SIZE_H;
-	if (f->w < M_SIZE_W)
-		aux_w = f->w;
-	else
-		aux_w = M_SIZE_W;
+
+	aux_h = (f->h < M_SIZE_H) ? f->h : M_SIZE_H;
+	aux_w = (f->w < M_SIZE_W) ? f->w : M_SIZE_W;
 	texelx = aux_h / f->nfil;
 	texely = aux_w / f->ncolmax;
 	f->m_size_h = texelx * f->nfil;

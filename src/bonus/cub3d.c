@@ -6,7 +6,7 @@
 /*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 02:56:54 by dgomez            #+#    #+#             */
-/*   Updated: 2020/07/21 17:37:25 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/22 03:43:59 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ static void	ft_init(t_file *f)
 int			main(int argc, char *argv[])
 {
 	t_file f;
-	
+
 	ft_check_args(&f, argc, argv);
 	if (!(f.ml.mlx = mlx_init()))
 		ft_handle_error("ERROR.MLX_INIT");

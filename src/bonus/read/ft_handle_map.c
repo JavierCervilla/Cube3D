@@ -6,7 +6,7 @@
 /*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 00:32:11 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/21 03:05:17 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/22 03:44:16 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ int			ft_copy_map(t_file *f)
 			j = -1;
 			while (++j < f->ncolmax)
 			{
-				f->c_map[i][j] = f->map[i][j]; 
+				f->c_map[i][j] = f->map[i][j];
 			}
 		}
 	}

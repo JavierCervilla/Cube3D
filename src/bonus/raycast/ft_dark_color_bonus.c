@@ -6,7 +6,7 @@
 /*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/22 02:05:30 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/22 02:20:34 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/22 03:59:54 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int			ft_dark_color(double distance, int color)
 	int		c[3];
 	int		dc[3];
 	int		rtn;
-	
+
 	dark = (D_COLOR / distance);
 	c[0] = (color >> 16) & 255;
 	c[1] = (color >> 8) & 255;

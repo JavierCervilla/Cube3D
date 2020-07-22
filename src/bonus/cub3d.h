@@ -6,7 +6,7 @@
 /*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 01:34:16 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/22 02:57:22 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/22 04:19:07 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,6 @@
 # define C_FLOOR 16777215
 # define C_SPRITE 16515847
 
-
-
-
 typedef struct		s_save
 {
 	unsigned int	file_size;
@@ -125,10 +122,10 @@ typedef struct		s_floor
 	int				celly;
 	int				tx;
 	int				ty;
+	int				p;
 	double			posz;
 	double			rowdist;
 }					t_floor;
-
 
 typedef struct		s_mlx
 {
@@ -308,7 +305,7 @@ void				ft_create_bmp(t_file *f);
 
 void				ft_init_texture(t_file *f);
 void				ft_draw_sky(t_file *f);
-void    			ft_draw_floor(t_file *f);
+void				ft_draw_floor(t_file *f);
 
 /*
 ** MINIMAP

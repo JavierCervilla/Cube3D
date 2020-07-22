@@ -6,7 +6,7 @@
 /*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 01:17:00 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/22 02:28:44 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/22 03:47:20 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ static void	ft_draw_sprites(t_file *f, int i, int stripe)
 			if (seg >= 0)
 				color = f->ml.text[4].data[seg];
 			if (color != f->ml.text[4].data[0])
-				*(f->ml.frame.data + (y * f->w) +
-					stripe) = ft_dark_color(f->ml.sp[f->ml.sp_order[i]].distance, color);
+				*(f->ml.frame.data + (y * f->w) + stripe) = ft_dark_color(
+					f->ml.sp[f->ml.sp_order[i]].distance, color);
 		}
 	}
 }

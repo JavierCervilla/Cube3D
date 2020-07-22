@@ -6,7 +6,7 @@
 /*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/11 17:53:17 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/21 03:05:46 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/22 03:44:28 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,3 @@ int		ft_map_check(int row, int col, t_file *f)
 	ok = ok == 0 ? ft_map_check(row + 1, col, f) : ok;
 	return (f->rtn = ok);
 }
-

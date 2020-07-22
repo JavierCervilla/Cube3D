@@ -1,3 +1,11 @@
+ R        900 900
+NO ./textures/images/own/pared_sangre.xpm
+SO ./textures/images/own/pared_musgo.xpm
+S  ./textures/sprite.xpm
+WE ./textures/images/own/pared_grafity.xpm
+EA ./textures/images/own/ladrillo_rojo.xpm
+F 175,25,84
+C 27,77,184
                 111111111111111111111111111111
             11111110020000000000000000000000011
             110111000N00200000000000000011111111

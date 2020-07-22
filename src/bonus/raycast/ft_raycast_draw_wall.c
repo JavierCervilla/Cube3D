@@ -6,7 +6,7 @@
 /*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 01:03:45 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/22 02:30:21 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/22 04:11:33 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ void		ft_draw_line(t_file *f)
 		f->ml.textpos += f->ml.textstep;
 		color = f->ml.text[f->ml.t_side].data[f->ml.text[f->ml.t_side].height
 			* f->ml.texty + f->ml.textx];
-		*(f->ml.frame.data + (i * f->w) + f->ml.x) = ft_dark_color(f->ml.perpwalldist, color);
+		*(f->ml.frame.data + (i * f->w) +
+		f->ml.x) = ft_dark_color(f->ml.perpwalldist, color);
 		i++;
 	}
 }
@@ -89,7 +90,7 @@ int			ft_initraycast(t_file *f)
 		while (hit == 0)
 		{
 			ft_calc_side(f);
-			if (f->map[(unsigned int)f->ml.map.x][(unsigned int)f->ml.map.y] == 1)
+			if (f->map[(int)f->ml.map.x][(int)f->ml.map.y] == 1)
 				hit = 1;
 		}
 		ft_fixing_def(f);

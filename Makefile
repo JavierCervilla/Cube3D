@@ -6,13 +6,15 @@
 #    By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/10 01:32:21 by dgomez            #+#    #+#              #
-#    Updated: 2020/07/22 03:37:31 by jcervill         ###   ########.fr        #
+#    Updated: 2020/07/22 04:27:39 by jcervill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	Cub3D
 
 NAME_BONUS		=	Cub3D_Bonus
+
+IMG				=	cub3d.bmp
 
 INC_DIR			=	./includes/
 
@@ -72,7 +74,7 @@ fclean: clean
 	@rm -f $(RAYCAST_DIR)*.o
 	@rm -f $(NAME)
 	@rm -f $(NAME_BONUS)
-	@rm -f cub3d.bmp
+	@rm -f $(IMG)
 	@echo "Cleaning Cub3d..."
 
 bonus: $(NAME_BONUS)

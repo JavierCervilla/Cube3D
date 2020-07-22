@@ -1,7 +1,7 @@
 R        900 900
 NO ./textures/images/own/pared_sangre.xpm
 SO ./textures/images/own/pared_musgo.xpm
-S  ./textures/images/own/dobby.xpm
+S  ./textures/images/own/sprite.xpm
 WE ./textures/images/own/pared_grafity.xpm
 EA ./textures/images/own/ladrillo_rojo.xpm
 F 175,35,84

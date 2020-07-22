@@ -6,7 +6,7 @@
 /*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 00:29:52 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/20 17:33:34 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/22 03:29:22 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int			ft_handle_path_spritex(t_file *f, int i)
 	if (!(f->line = ft_strchr(f->line, '.')))
 		ft_handle_error("Path of Spritex is invalid\n");
 	else if (*(f->line + 1) == '/')
-		aux = ft_strdup(f->line);
+		aux = f->line;
 	else
 		ft_handle_error("Path of Spritex is invalid\n");
 	if (ft_check_extension((ext = ft_strchr(++aux, '.'))) < 0)

@@ -6,7 +6,7 @@
 /*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 01:03:45 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/21 00:13:01 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/22 02:30:21 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void		ft_draw_line(t_file *f)
 		f->ml.textpos += f->ml.textstep;
 		color = f->ml.text[f->ml.t_side].data[f->ml.text[f->ml.t_side].height
 			* f->ml.texty + f->ml.textx];
-		*(f->ml.frame.data + (i * f->w) + f->ml.x) = color;
+		*(f->ml.frame.data + (i * f->w) + f->ml.x) = ft_dark_color(f->ml.perpwalldist, color);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 01:06:24 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/21 18:33:30 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/22 02:49:32 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,5 @@ int			ft_move_and_draw(t_file *f)
 	mlx_put_image_to_window(f->ml.mlx, f->ml.window, f->ml.mano.img, (f->w / 2) - f->ml.mano.width / 2, f->h - (f->ml.mano.height - 2));
 	mlx_put_image_to_window(f->ml.mlx, f->ml.window, f->ml.minimap.img,
 	(f->ml.mano.img, (f->w / 2) - f->ml.mano.width / 2) + 377, (f->h - (f->ml.mano.height -5) + 49));
+	mlx_put_image_to_window(f->ml.mlx, f->ml.window, f->ml.bat.img, 0, 0);
 }

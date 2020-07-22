@@ -6,11 +6,12 @@
 /*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/19 04:04:14 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/21 20:26:58 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/22 02:19:55 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
 
 void    ft_init_texture(t_file *f)
 {
@@ -39,13 +40,12 @@ void    ft_draw_floor(t_file *f)
     int seg;
     
     y = -1;
-    ft_bzero((void*)&f->fl, sizeof(t_floor));
     while (++y < f->h)
     {
-        f->fl.raydir0.x = f->ml.dir.x - f->ml.plane.x;
-        f->fl.raydir0.y = f->ml.dir.y - f->ml.plane.y;
-        f->fl.raydir1.x = f->ml.dir.x + f->ml.plane.x;
-        f->fl.raydir1.y = f->ml.dir.y + f->ml.plane.y;
+        f->fl.raydir0.x = (f->ml.dir.x - f->ml.plane.x) * 1.5;
+        f->fl.raydir0.y = (f->ml.dir.y - f->ml.plane.y) * 1.5;
+        f->fl.raydir1.x = (f->ml.dir.x + f->ml.plane.x) * 1.5;
+        f->fl.raydir1.y = (f->ml.dir.y + f->ml.plane.y) * 1.5;
         p = y - f->h / 2;
         f->fl.posz = 0.5 * f->h;
         f->fl.rowdist = f->fl.posz / p;
@@ -58,13 +58,13 @@ void    ft_draw_floor(t_file *f)
         {
             f->fl.cellx = (int)f->fl.floor.x;
             f->fl.celly = (int)f->fl.floor.y;
-            f->fl.tx = (int)(f->ml.text[6].width * (f->fl.floor.x - f->fl.cellx)) & f->ml.text[6].width - 1;
-            f->fl.ty = (int)(f->ml.text[6].height * (f->fl.floor.y - f->fl.celly)) & f->ml.text[6].height - 1;
+            f->fl.tx = (int)(f->ml.text[6].width * (f->fl.floor.x - f->fl.cellx)) & (f->ml.text[6].width - 1);
+            f->fl.ty = (int)(f->ml.text[6].height * (f->fl.floor.y - f->fl.celly)) & (f->ml.text[6].height - 1);
             f->fl.floor.x += f->fl.flst.x;
             f->fl.floor.y += f->fl.flst.y;
-            seg = 256 * f->fl.ty + f->fl.tx;
+            seg = f->ml.text[6].width * f->fl.ty + f->fl.tx;
             if (seg >= 0)
-                color = f->ml.text[6].data[seg];
+                color = ft_dark_color(f->fl.rowdist, f->ml.text[6].data[seg]);
             *(f->ml.frame.data + (y * f->w) + x) = color;
         }
     }

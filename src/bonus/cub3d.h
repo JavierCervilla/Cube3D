@@ -6,7 +6,7 @@
 /*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 01:34:16 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/21 18:39:58 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/22 02:57:22 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,11 @@
 #  define KEY_DOWN 125
 #  define KEY_M 46
 # endif
-# define ROT 0.14
-# define MOV 0.14
+# define ROT 0.27
+# define MOV 0.27
 # define SIZE 640
+# define D_COLOR 1.5
+
 /*
 ** MINIMAP
 */
@@ -169,6 +171,7 @@ typedef struct		s_mlx
 	t_img			text[7];
 	t_img			minimap;
 	t_img			mano;
+	t_img			bat;
 	int				t_side;
 	double			wallx;
 	int				textx;
@@ -263,6 +266,7 @@ void				ft_init_file_struct(t_file *f);
 void				ft_init_file_struct2(t_file *f);
 void				ft_calc_step(t_file *f);
 void				ft_calc_side(t_file *f);
+int					ft_dark_color(double distance, int color);
 
 /*
 ** MOVIMIENTO ARCHIVO: ft_move.c

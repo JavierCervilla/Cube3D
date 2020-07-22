@@ -6,7 +6,7 @@
 /*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 01:17:00 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/21 04:03:52 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/22 03:36:03 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	ft_draw_sprites(t_file *f, int i, int stripe)
 		f->ml.transform.y < f->ml.zbuff[stripe])
 	{
 		y = f->ml.start_sp_y - 1;
-		while (++y < f->ml.end_sp_y)
+		while (++y <= f->ml.end_sp_y)
 		{
 			d = (y) * 256 - f->h * 128 + f->ml.sp_height * 128;
 			f->ml.tex_y = (int)((d * SIZE) / f->ml.sp_height)
@@ -34,7 +34,8 @@ static void	ft_draw_sprites(t_file *f, int i, int stripe)
 			seg = f->ml.text[4].width * f->ml.tex_y + f->ml.tex_x;
 			if (seg >= 0)
 				color = f->ml.text[4].data[seg];
-			if (color != f->ml.text[4].data[0])
+			if (color != f->ml.text[4].data[0] &&
+			(color > 0 && color < 16777215))
 				*(f->ml.frame.data + (y * f->w) + stripe) = color;
 		}
 	}
@@ -87,7 +88,7 @@ void		ft_calc_rel_dist(t_file *f)
 		ft_precalcs(f, i);
 		ft_calc_width(f, i);
 		stripe = f->ml.start_sp_x;
-		while (stripe < f->ml.end_sp_x)
+		while (stripe <= f->ml.end_sp_x)
 		{
 			ft_draw_sprites(f, i, stripe);
 			stripe++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_save.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcervill <jcervill@student.42madrid.fr>    +#+  +:+       +#+        */
+/*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 01:54:39 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/18 23:36:26 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/22 03:34:30 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ void		ft_create_bmp(t_file *f)
 	int		cp[f->h * f->w - 1];
 	t_bmp	bmp;
 
-	i[0] = -1;
-	i[1] = 0;
-	i[2] = 0;
+	ft_bzero((void*)i, sizeof(i));
+	ft_bzero((void*)&bmp, sizeof(t_bmp));
 	ft_init_bmp_header(f, &bmp);
 	fd = open("cub3d.bmp", O_WRONLY | O_CREAT | O_TRUNC, S_IRWXU);
 	write(fd, "BM", 2);
 	write(fd, &bmp, sizeof(bmp));
+	i[0] = -1;
 	while (++i[0] < f->h)
 	{
 		i[1] = 0;

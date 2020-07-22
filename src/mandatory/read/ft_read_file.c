@@ -6,7 +6,7 @@
 /*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 00:27:15 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/21 03:11:06 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/22 03:27:52 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ int			ft_read(t_file *f)
 		ft_copy_map(f);
 		if (ft_map_check(f->pos[0], f->pos[1], f) == -1)
 			ft_handle_error("MAP ERROR.Error al checkear el mapa\n");
-			//FIXME:LEAKS
 	}
 	close(f->fd);
 	return (f->rtn);

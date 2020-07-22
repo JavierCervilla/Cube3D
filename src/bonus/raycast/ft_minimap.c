@@ -6,12 +6,13 @@
 /*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 04:05:51 by jcervill          #+#    #+#             */
-/*   Updated: 2020/07/21 18:40:04 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/07/22 02:48:28 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 #define MANO "./textures/images/horror/mano_ipad.xpm"
+#define BAT "./textures/images/own/batery.xpm"
 
 static int ft_choose_color(t_file *f, int x, int y)
 {
@@ -77,5 +78,7 @@ void	ft_init_minimap(t_file *f)
 		&f->ml.minimap.endian);
 	f->ml.mano.img = mlx_xpm_file_to_image(f->ml.mlx, MANO,
 	&f->ml.mano.width, &f->ml.mano.height);
+	f->ml.bat.img = mlx_xpm_file_to_image(f->ml.mlx, BAT,
+	&f->ml.bat.width, &f->ml.bat.height);
 	ft_draw_minimap(f, texelx, texely);
 }

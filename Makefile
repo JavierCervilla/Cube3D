@@ -6,7 +6,7 @@
 #    By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/10 01:32:21 by dgomez            #+#    #+#              #
-#    Updated: 2020/07/20 20:53:38 by jcervill         ###   ########.fr        #
+#    Updated: 2020/07/22 03:37:31 by jcervill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,7 @@ fclean: clean
 	@rm -f $(RAYCAST_DIR)*.o
 	@rm -f $(NAME)
 	@rm -f $(NAME_BONUS)
+	@rm -f cub3d.bmp
 	@echo "Cleaning Cub3d..."
 
 bonus: $(NAME_BONUS)

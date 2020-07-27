@@ -18,7 +18,7 @@ If you want to know more :arrow_right: [Wolfenstein 3D](https://es.wikipedia.org
 ## Installation :rocket:
 1. `git clone https://www.github.com/MikelTolino/Cub3D.git`
 2. `make` or `make bonus`
-3. `./cub3D maps/mandatory.cub` or `./cub3D maps/tx.cub`
+3. `./cub3D maps/mandatory.cub` or `./cub3D_Bonus maps/tx.cub`
 
 Based on your `make` choice, you should use one map or another.
 
